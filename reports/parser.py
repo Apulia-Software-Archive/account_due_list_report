@@ -1,10 +1,10 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (c) 2012 Andrea Cometa All Rights Reserved.
-#                       www.andreacometa.it
-#                       openerp@andreacometa.it
+#    Copyright (c) 2015 Apulia Software srl All Rights Reserved.
+#                       www.apuliasoftware.it
+#                       info@apuliasoftware.it
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,29 +21,29 @@
 #
 ##############################################################################
 
-import time
-from report import report_sxw
-import inspect
-import os
-from datetime import datetime
-from osv import osv
-from osv import fields
+# import time
+# from openerp.report import report_sxw
+# from openerp.tools.translate import _
+from openerp import api, models
+# from openerp.osv import orm
 
 
-class account_due_list_webkit(report_sxw.rml_parse):
-    def __init__(self, cr, uid, name, context):
-        super(account_due_list_webkit, self).__init__(cr, uid, name,
-                                                      context=context)
-        file_path = os.path.dirname(inspect.getfile(inspect.currentframe()))
-        self.localcontext.update({
-            'datetime': datetime,
-            'time': time,
-            'cr': cr,
-            'uid': uid,
-            'file_path': file_path,
-        })
+class DueListQweb(models.AbstractModel):
 
-report_sxw.report_sxw('report.account_due_list.scadenzario',
-                      'account.move.line',
-                      'account_due_list_extended/reports/scadenzario.mako',
-                      parser=account_due_list_webkit)
+    _name = 'report.account_due_list_report.report_due_list'
+
+    @api.multi
+    def render_html(self, data=None):
+        report_obj = self.env['report']
+        report = report_obj._get_report_from_name(
+            'account_due_list_report.report_due_list_qweb')
+        docargs = {
+            'doc_ids': self._ids,
+            'doc_model': report.model,
+            'company': False,
+            'docs': self.env[report.model].browse(self._ids),
+        }
+        print docargs
+        return report_obj.render(
+            'account_due_list_report.report_due_list_qweb',
+            docargs)

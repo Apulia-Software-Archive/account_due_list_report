@@ -21,6 +21,5 @@
 #
 ##############################################################################
 
-import account
-import reports
-
+from . import models
+from . import reports

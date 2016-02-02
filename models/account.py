@@ -1,10 +1,10 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (c) 2012 Andrea Cometa All Rights Reserved.
-#                       www.andreacometa.it
-#                       openerp@andreacometa.it
+#    Copyright (c) 2015 Apulia Software srl All Rights Reserved.
+#                       www.apuliasoftware.it
+#                       info@apuliasoftware.it
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,10 +21,10 @@
 #
 ##############################################################################
 
-from osv import fields, osv
+from openerp.osv import fields, orm
 
 
-class account_payment_term_type(osv.osv):
+class account_payment_term_type(orm.Model):
     _name = 'account.payment.term.type'
     _description = 'Payment term type list'
 
@@ -35,7 +35,7 @@ class account_payment_term_type(osv.osv):
 account_payment_term_type()
 
 
-class account_payment_term(osv.osv):
+class account_payment_term(orm.Model):
     _name = 'account.payment.term'
     _inherit = 'account.payment.term'
 
@@ -47,7 +47,7 @@ class account_payment_term(osv.osv):
 account_payment_term()
 
 
-class account_journal(osv.osv):
+class account_journal(orm.Model):
     _inherit = "account.journal"
 
     _columns = {
@@ -61,7 +61,7 @@ class account_journal(osv.osv):
 account_journal()
 
 
-class account_move_line(osv.osv):
+class account_move_line(orm.Model):
 
     _name = 'account.move.line'
     _inherit = 'account.move.line'

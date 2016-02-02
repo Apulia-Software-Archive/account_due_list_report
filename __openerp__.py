@@ -2,9 +2,9 @@
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (c) 2012 Andrea Cometa All Rights Reserved.
-#                       www.andreacometa.it
-#                       openerp@andreacometa.it
+#    Copyright (c) 2015 Apulia Software srl All Rights Reserved.
+#                       www.apuliasoftware.it
+#                       info@apuliasoftware.it
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -22,19 +22,20 @@
 ##############################################################################
 
 {
-    'name': "Payments Due list Extended",
+    'name': "Payments Due list Report",
     'version': '0.1',
     'category': 'Generic Modules/Payment',
-    'description': """ENG: Original AgileBG addons extended with webkit report
-ITA: Stampa webkit delle scadenze cliente/fornitore""",
-    'author': 'www.andreacometa.it',
-    'website': 'http://www.andreacometa.it',
+    'description': """
+ENG: Original AgileBG addons extended with QWeb report
+ITA: Stampa Qweb delle scadenze cliente/fornitore""",
+    'author': 'Apulia Software srl',
+    'website': 'http://www.apuliasoftware.it',
     'license': 'AGPL-3',
-    "depends" : ['account_due_list', 'report_webkit'],
+    "depends" : ['account_due_list', 'report'],
     "init_xml" : [],
     "update_xml" : [
-        'account/account_view.xml',
-        'reports/reports.xml',
+        'views/account_view.xml',
+        'reports/due_list_qweb.xml',
         'payment_type_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',

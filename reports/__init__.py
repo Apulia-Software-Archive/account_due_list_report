@@ -1,10 +1,10 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    OpenERP, Open Source Management Solution
-#    Copyright (c) 2012 Andrea Cometa All Rights Reserved.
-#                       www.andreacometa.it
-#                       openerp@andreacometa.it
+#    Copyright (c) 2015 Apulia Software srl All Rights Reserved.
+#                       www.apuliasoftware.it
+#                       info@apuliasoftware.it
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as published
@@ -21,4 +21,4 @@
 #
 ##############################################################################
 
-import parser
+from . import parser
