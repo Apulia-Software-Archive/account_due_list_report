@@ -36,6 +36,7 @@ ITA: Stampa Qweb delle scadenze cliente/fornitore""",
     "update_xml" : [
         'views/account_view.xml',
         'reports/due_list_qweb.xml',
+        'reports/reports.xml',
         'payment_type_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',

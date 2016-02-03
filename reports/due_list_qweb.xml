@@ -2,15 +2,9 @@
 <openerp>
     <data>
 
-        <template id="report_duelist">
-
-            <style type="text/css">
-                table.delivery_data td h6 { margin: 0; }
-                .signature { min-height: 4em; }
-            </style>
+        <template id="report_duelist_qweb">
 
 			<center><H1>SCADENZARIO</H1></center>
-
 			<table class="font_9 w100 bordi_arrotondati">
 				<tr>
 					<td class="w5"><p style="text-align:left; font-weight: bold;">Sez.le</p></td>
@@ -24,7 +18,7 @@
 					<td class="w10"><p style="text-align:right; font-weight: bold;">Residuo</p></td>
 				</tr>
 			</table>
-		
+
 			<table id="content" class="font_9 w100">
 				<t t-set="tot_importo" t-value="0"/>
 				<t t-set="tot_dare" t-value="0"/>
@@ -106,16 +100,8 @@
 					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
 				</tr>
 			</table>
-    
-		</template>
 
-		<report
-			string="Due List report"
-			id="action_report_duelist"
-			model="account.move.line"
-			report_type="qweb-pdf"
-			name="account_due_list_report.report_duelist"
-			file="account_due_list_report.report_duelist"/>
+		</template>
 
     </data>
 </openerp>
