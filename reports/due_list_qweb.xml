@@ -3,7 +3,9 @@
     <data>
 
         <template id="report_duelist_qweb">
-
+        <t t-call="report.html_container">
+		 <t t-call="report.internal_layout">
+          <div class="page">
 			<center><H1>SCADENZARIO</H1></center>
 			<table class="font_9 w100 bordi_arrotondati">
 				<tr>
@@ -100,7 +102,9 @@
 					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
 				</tr>
 			</table>
-
+		  </div>
+		 </t>
+		</t>
 		</template>
 
     </data>

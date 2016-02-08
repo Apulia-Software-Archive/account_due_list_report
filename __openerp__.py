@@ -26,14 +26,14 @@
     'version': '0.1',
     'category': 'Generic Modules/Payment',
     'description': """
-ENG: Original AgileBG addons extended with QWeb report
+ENG: Original AgileBG addons extended with QWeb report\n
 ITA: Stampa Qweb delle scadenze cliente/fornitore""",
     'author': 'Apulia Software srl',
     'website': 'http://www.apuliasoftware.it',
     'license': 'AGPL-3',
     "depends" : ['account_due_list', 'report'],
     "init_xml" : [],
-    "update_xml" : [
+    "data" : [
         'views/account_view.xml',
         'reports/due_list_qweb.xml',
         'reports/reports.xml',
@@ -41,7 +41,6 @@ ITA: Stampa Qweb delle scadenze cliente/fornitore""",
         'security/security.xml',
         'security/ir.model.access.csv',
         ],
-    "demo_xml" : [],
     "active": False,
     "installable": True,
     "images": ['images/image.png'],

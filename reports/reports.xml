@@ -2,6 +2,20 @@
 <openerp>
     <data>
                
+	    <!-- PAPER FORMATS -->
+        <record id="due_list_a4_landscape" model="report.paperformat">
+            <field name="name">Due List A4 Landscape</field>
+            <field name="orientation">Landscape</field>
+            <field name="format">A4</field>
+            <field name="margin_top">3</field>
+            <field name="margin_bottom">3</field>
+            <field name="margin_left">3</field>
+            <field name="margin_right">3</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">3</field>
+            <field name="dpi">90</field>
+        </record>
+
 		<report
 			string="Due List report"
 			id="action_report_duelist"
@@ -9,6 +23,11 @@
 			report_type="qweb-pdf"
 			name="account_due_list_report.report_duelist_qweb"
 			file="account_due_list_report.report_duelist_qweb"/>
+
+        <record id="action_report_duelist" model="ir.actions.report.xml">
+            <field name="paperformat_duelist_id"
+                   ref="account_due_list_report.report_duelist_qweb"/>
+        </record>
 
     </data>
 </openerp>
