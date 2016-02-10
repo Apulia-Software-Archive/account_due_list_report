@@ -25,7 +25,7 @@
 			file="account_due_list_report.report_duelist_qweb"/>
 
         <record id="action_report_duelist" model="ir.actions.report.xml">
-            <field name="paperformat_duelist_id"
+            <field name="due_list_a4_landscape"
                    ref="account_due_list_report.report_duelist_qweb"/>
         </record>
 
