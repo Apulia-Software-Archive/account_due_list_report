@@ -1,111 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-
         <template id="report_duelist_qweb">
-        <t t-call="report.html_container">
-		 <t t-call="report.internal_layout">
-          <div class="page">
-			<center><H1>SCADENZARIO</H1></center>
-			<table class="font_9 w100 bordi_arrotondati">
-				<tr>
-					<td class="w5"><p style="text-align:left; font-weight: bold;">Sez.le</p></td>
-					<td class="w15"><p style="text-align:left; font-weight: bold;">Partner</p></td>
-					<td class="w10"><p style="text-align:left; font-weight: bold;">Data Fattura</p></td>
-					<td class="w10"><p style="text-align:left; font-weight: bold;">Fattura</p></td>
-					<td class="w10"><p style="text-align:left; font-weight: bold;">Data Scadenza</p></td>
-					<td class="w15"><p style="text-align:left; font-weight: bold;">Pagamento</p></td>
-					<td class="w10"><p style="text-align:right; font-weight: bold;">Dare</p></td>
-					<td class="w10"><p style="text-align:right; font-weight: bold;">Avere</p></td>
-					<td class="w10"><p style="text-align:right; font-weight: bold;">Residuo</p></td>
-				</tr>
-			</table>
-
-			<table id="content" class="font_9 w100">
-				<t t-set="tot_importo" t-value="0"/>
-				<t t-set="tot_dare" t-value="0"/>
-				<t t-set="tot_avere" t-value="0"/>
-				<t t-set="data_scadenza" t-value="0000-00-00"/>
-				<t t-foreach="docs" t-as="line">
-					<t t-if="line">
-						<t t-if="data_scadenza != (line.date_maturity or line.date)">
-							<t t-if="data_scadenza != '0000-00-00'">
-								<tr>
-									<td colspan="9"><hr style="width:100%"></hr></td></tr>
-								<tr>
-									<td class="w5"> </td>
-									<td class="w15"> </td>
-									<td class="w10"> </td>
-									<td class="w10"> </td>
-									<td class="w10"> </td>
-									<td class="w15"><p style="text-align:left;"><b>TOTALE SCADENZA</b></p></td>
-									<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
-									<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
-									<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
-								</tr>
-								<tr><td colspan="9"> </td></tr>
-							</t>
-						<t t-set="parziale_importo" t-value="0"/>
-						<t t-set="parziale_dare" t-value="0"/>
-						<t t-set="parziale_avere" t-value="0"/>
-						<t t-set="data_scadenza" t-value="(line.date_maturity or line.date)"/>
-					</t>
-					<tr>
-						<td class="w5"><p style="text-align:left;"><t t-esc="line.invoice.journal_id and line.invoice.journal_id.code or ''"/></p></td>
-						<td class="w15"><p style="text-align:left;"><t t-esc="line.partner_id.name or ''"/></p></td>
-						<td class="w10"><p style="text-align:left;"><t t-esc="line.invoice.date_invoice or ''"/></p></td>
-						<td class="w10"><p style="text-align:left;"><t t-esc="line.invoice.supplier_invoice_number or line.invoice.number or line.name or ''"/></p></td>
-						<td class="w10"><p style="text-align:left;"><t t-esc="line.date_maturity or line.date"/></p></td>
-						<td class="w15"><p style="text-align:left;"><t t-esc="line.invoice.payment_term and line.invoice.payment_term.name or ''"/></p></td>
-						<td class="w10"><p style="text-align:right;"><span t-field="line.debit"/></p></td>
-						<td class="w10"><p style="text-align:right;"><span t-field="line.credit"/></p></td>
-						<td class="w10"><p style="text-align:right;"><span t-field="line.amount_residual"/></p></td>
-					</tr>
-					<t t-if="line.debit == 0.0" >
-						<t t-set="tot_importo" t-value="tot_importo-line.amount_residual"/>
-						<t t-set="parziale_importo" t-value="parziale_importo-line.amount_residual"/>
-					</t>
-					<t t-if="line.debit != 0.0" >
-						<t t-set="tot_importo" t-value="tot_importo+line.amount_residual"/>
-						<t t-set="parziale_importo" t-value="parziale_importo+line.amount_residual"/>
-					</t>
-  					<t t-set="tot_dare" t-value="tot_dare+line.debit"/>
-  					<t t-set="tot_avere" t-value="tot_dare+line.credit"/>
-  					<t t-set="parziale_dare" t-value="tot_dare+line.debit"/>
-  					<t t-set="parziale_avere" t-value="tot_dare+line.credit"/>
-				</t>
-				</t>
-				<tr><td colspan="9"><hr style="width:100%"></hr></td></tr>
-				<tr>
-					<td class="w5"> </td>
-					<td class="w15"> </td>
-					<td class="w10"> </td>
-					<td class="w10"> </td>
-					<td class="w10"> </td>
-					<td class="w15"><p style="text-align:left;"><b>TOTALE SCADENZA</b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
-				</tr>
-				<tr><td colspan="9"> </td></tr>
-
-				<tr><td colspan="9"><hr style="width:100%"></hr></td></tr>
-				<tr style="height:100%">
-					<td class="w5"> </td>
-					<td class="w15"> </td>
-					<td class="w10"> </td>
-					<td class="w10"> </td>
-					<td class="w10"> </td>
-					<td class="w15"><p style="text-align:left;"><b>TOTALE COMPLESSIVO</b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
-					<td class="w10"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
-				</tr>
-			</table>
-		  </div>
-		 </t>
-		</t>
-		</template>
-
+            <t t-call="report.html_container">
+                <t t-call="report.internal_layout">
+                    <div class="page">
+                        <center><H1>SCADENZARIO</H1></center>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <div class="text-center">
+                                    <tr>
+                                        <th>Sez.le</th>
+                                        <th>Partner</th>
+                                        <th>Data Fattura</th>
+                                        <th>Fattura</th>
+                                        <th>Data Scadenza</th>
+                                        <th>Pagamento</th>
+                                        <th>Dare</th>
+                                        <th>Avere</th>
+                                        <th>Residuo</th>
+                                    </tr>
+                                    </div>
+                                </thead>
+				                <t t-set="tot_importo" t-value="0"/>
+                                <t t-set="tot_dare" t-value="0"/>
+				                <t t-set="tot_avere" t-value="0"/>
+                                <t t-set="parziale_importo" t-value="0"/>
+                                <t t-set="parziale_dare" t-value="0"/>
+                                <t t-set="parziale_avere" t-value="0"/>
+				                <t t-set="flag" t-value="1"/>
+				                <t t-foreach="docs" t-as="line">
+					                <t t-if="line">
+                                        <t t-if="flag != 1">
+                                            <t t-if="data_scadenza != (line.date_maturity or line.date)">
+                                                <tr>
+                                                    <td colspan="12"> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="9"><p style="text-align:right;"><b>TOTALE SCADENZA</b></p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
+                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
+                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="12"> </td>
+                                                </tr>
+                                                <t t-set="parziale_importo" t-value="0"/>
+                                                <t t-set="parziale_dare" t-value="0"/>
+                                                <t t-set="parziale_avere" t-value="0"/>
+                                            </t>
+                                        </t>
+                                        <tbody>
+                                            <tr>
+                                                <td><t t-esc="line.invoice.journal_id and line.invoice.journal_id.code or ''"/></td>
+                                                <td><t t-esc="line.partner_id.name or ''"/></td>
+                                                <td><t t-esc="line.invoice.date_invoice or ''"/></td>
+                                                <td><t t-esc="line.invoice.supplier_invoice_number or line.invoice.number or line.name or ''"/></td>
+                                                <td><t t-esc="line.date_maturity or line.date"/></td>
+                                                <td><t t-esc="line.invoice.payment_term and line.invoice.payment_term.name or ''"/></td>
+                                                <td><span t-field="line.debit"/></td>
+                                                <td><span t-field="line.credit"/></td>
+                                                <td><span t-field="line.amount_residual"/></td>
+                                            </tr>
+                                            <t t-if="line.debit == 0.0" >
+                                                <t t-set="tot_importo" t-value="tot_importo-line.amount_residual"/>
+                                                <t t-set="parziale_importo" t-value="parziale_importo-line.amount_residual"/>
+                                            </t>
+                                            <t t-if="line.debit != 0.0" >
+                                                <t t-set="tot_importo" t-value="tot_importo+line.amount_residual"/>
+                                                <t t-set="parziale_importo" t-value="parziale_importo+line.amount_residual"/>
+                                            </t>
+                                            <t t-set="tot_dare" t-value="tot_dare+line.debit"/>
+                                            <t t-set="tot_avere" t-value="tot_dare+line.credit"/>
+                                            <t t-set="parziale_dare" t-value="tot_dare+line.debit"/>
+                                            <t t-set="parziale_avere" t-value="tot_dare+line.credit"/>
+                                            <t t-set="data_scadenza" t-value="(line.date_maturity or line.date)"/>
+                                            <t t-set="flag" t-value="flag + 1"/>
+                                        </tbody>
+                                    </t>
+                                </t>
+                            </table>
+                    </div>
+                </t>
+            </t>
+        </template>
     </data>
 </openerp>

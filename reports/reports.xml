@@ -12,7 +12,7 @@
             <field name="margin_left">3</field>
             <field name="margin_right">3</field>
             <field name="header_line" eval="False"/>
-            <field name="header_spacing">3</field>
+            <field name="header_spacing">10</field>
             <field name="dpi">90</field>
         </record>
 
@@ -25,8 +25,8 @@
 			file="account_due_list_report.report_duelist_qweb"/>
 
         <record id="action_report_duelist" model="ir.actions.report.xml">
-            <field name="due_list_a4_landscape"
-                   ref="account_due_list_report.report_duelist_qweb"/>
+            <field name="paperformat_id"
+                   ref="account_due_list_report.due_list_a4_landscape"/>
         </record>
 
     </data>
