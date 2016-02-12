@@ -22,15 +22,15 @@
                                     </tr>
                                     </div>
                                 </thead>
-				                <t t-set="tot_importo" t-value="0.0"/>
+                                <t t-set="tot_importo" t-value="0.0"/>
                                 <t t-set="tot_dare" t-value="0.0"/>
-				                <t t-set="tot_avere" t-value="0.0"/>
+                                <t t-set="tot_avere" t-value="0.0"/>
                                 <t t-set="parziale_importo" t-value="0.0"/>
                                 <t t-set="parziale_dare" t-value="0.0"/>
                                 <t t-set="parziale_avere" t-value="0.0"/>
-				                <t t-set="flag" t-value="1"/>
-				                <t t-foreach="docs" t-as="line">
-					                <t t-if="line">
+                                <t t-set="flag" t-value="1"/>
+                                <t t-foreach="docs" t-as="line">
+                                    <t t-if="line">
                                         <t t-if="flag != 1">
                                             <t t-if="data_scadenza != (line.date_maturity or line.date)">
                                                 <tr>
