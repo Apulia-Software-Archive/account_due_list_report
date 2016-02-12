@@ -22,12 +22,12 @@
                                     </tr>
                                     </div>
                                 </thead>
-				                <t t-set="tot_importo" t-value="0"/>
-                                <t t-set="tot_dare" t-value="0"/>
-				                <t t-set="tot_avere" t-value="0"/>
-                                <t t-set="parziale_importo" t-value="0"/>
-                                <t t-set="parziale_dare" t-value="0"/>
-                                <t t-set="parziale_avere" t-value="0"/>
+				                <t t-set="tot_importo" t-value="0.0"/>
+                                <t t-set="tot_dare" t-value="0.0"/>
+				                <t t-set="tot_avere" t-value="0.0"/>
+                                <t t-set="parziale_importo" t-value="0.0"/>
+                                <t t-set="parziale_dare" t-value="0.0"/>
+                                <t t-set="parziale_avere" t-value="0.0"/>
 				                <t t-set="flag" t-value="1"/>
 				                <t t-foreach="docs" t-as="line">
 					                <t t-if="line">
@@ -40,16 +40,17 @@
                                                     <td colspan="9"><p style="text-align:right;"><b>TOTALE SCADENZA</b></p></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
-                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
-                                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
+                                                    <td colspan="6"> </td>
+                                                    <td><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
+                                                    <td><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
+                                                    <td><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="12"> </td>
                                                 </tr>
-                                                <t t-set="parziale_importo" t-value="0"/>
-                                                <t t-set="parziale_dare" t-value="0"/>
-                                                <t t-set="parziale_avere" t-value="0"/>
+                                                <t t-set="parziale_importo" t-value="0.0"/>
+                                                <t t-set="parziale_dare" t-value="0.0"/>
+                                                <t t-set="parziale_avere" t-value="0.0"/>
                                             </t>
                                         </t>
                                         <tbody>
@@ -60,20 +61,11 @@
                                                 <td><t t-esc="line.invoice.supplier_invoice_number or line.invoice.number or line.name or ''"/></td>
                                                 <td><t t-esc="line.date_maturity or line.date"/></td>
                                                 <td><t t-esc="line.invoice.payment_term and line.invoice.payment_term.name or ''"/></td>
-                                                <td><span t-field="line.debit"/></td>
-                                                <td><span t-field="line.credit"/></td>
-                                                <td><span t-field="line.amount_residual"/></td>
+                                                <td class="text-right"><span t-field="line.debit"/></td>
+                                                <td class="text-right"><span t-field="line.credit"/></td>
+                                                <td class="text-right"><span t-field="line.maturity_residual"/></td>
                                             </tr>
-                                            <t t-if="line.debit == 0.0" >
-                                                <t t-set="tot_importo" t-value="tot_importo-line.amount_residual"/>
-                                                <t t-set="parziale_importo" t-value="parziale_importo-line.amount_residual"/>
-                                            </t>
-                                            <t t-if="line.debit != 0.0" >
-                                                <t t-set="tot_importo" t-value="tot_importo+line.amount_residual"/>
-                                                <t t-set="parziale_importo" t-value="parziale_importo+line.amount_residual"/>
-                                            </t>
-                                            <t t-set="tot_dare" t-value="tot_dare+line.debit"/>
-                                            <t t-set="tot_avere" t-value="tot_dare+line.credit"/>
+                                            <t t-set="parziale_importo" t-value="parziale_importo+line.maturity_residual"/>
                                             <t t-set="parziale_dare" t-value="parziale_dare+line.debit"/>
                                             <t t-set="parziale_avere" t-value="parziale_avere+line.credit"/>
                                             <t t-set="data_scadenza" t-value="(line.date_maturity or line.date)"/>
@@ -88,31 +80,28 @@
                                     <td colspan="9"><p style="text-align:right;"><b>TOTALE SCADENZA</b></p></td>
                                 </tr>
                                 <tr>
-                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
-                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
-                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
+                                    <td colspan="6"> </td>
+                                    <td><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
+                                    <td><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
+                                    <td><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
                                 </tr>
                                 <tr>
                                     <td colspan="12"> </td>
                                 </tr>
-                            </table>
 
-                            <div class="row">
-                                <div class="col-xs-9">
-                                    <table id="total" class="table table-condensed">
-                                        <tbody>
-                                            <tr>
-                                                <td><h4><p style="text-align:right;"><b>TOTALE COMPLESSIVO: </b></p></h4></td>
-                                            </tr>
-                                            <tr>
-                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_dare"/></b></p></h4></td>
-                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_avere"/></b></p></h4></td>
-                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_importo"/></b></p></h4></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                                <t t-set="tot_dare" t-value="sum([t.debit for t in docs])"/>
+                                <t t-set="tot_avere" t-value="sum([t.credit for t in docs])"/>
+                                <t t-set="tot_residual" t-value="sum([t.maturity_residual for t in docs])"/>
+                                <tr>
+                                    <td colspan="9"><h4><p style="text-align:right;"><b>TOTALE COMPLESSIVO: </b></p></h4></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6"> </td>
+                                    <td><h4><p style="text-align:right;"><b><span t-esc="tot_dare"/></b></p></h4></td>
+                                    <td><h4><p style="text-align:right;"><b><span t-esc="tot_avere"/></b></p></h4></td>
+                                    <td><h4><p style="text-align:right;"><b><span t-esc="tot_residual"/></b></p></h4></td>
+                                </tr>
+                            </table>
                     </div>
                 </t>
             </t>
