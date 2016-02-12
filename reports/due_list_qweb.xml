@@ -6,7 +6,7 @@
                 <t t-call="report.internal_layout">
                     <div class="page">
                         <center><H1>SCADENZARIO</H1></center>
-                            <table class="table table-condensed">
+                            <table class="table">
                                 <thead>
                                     <div class="text-center">
                                     <tr>
@@ -74,14 +74,45 @@
                                             </t>
                                             <t t-set="tot_dare" t-value="tot_dare+line.debit"/>
                                             <t t-set="tot_avere" t-value="tot_dare+line.credit"/>
-                                            <t t-set="parziale_dare" t-value="tot_dare+line.debit"/>
-                                            <t t-set="parziale_avere" t-value="tot_dare+line.credit"/>
+                                            <t t-set="parziale_dare" t-value="parziale_dare+line.debit"/>
+                                            <t t-set="parziale_avere" t-value="parziale_avere+line.credit"/>
                                             <t t-set="data_scadenza" t-value="(line.date_maturity or line.date)"/>
                                             <t t-set="flag" t-value="flag + 1"/>
                                         </tbody>
                                     </t>
                                 </t>
+                                <tr>
+                                    <td colspan="12"> </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"><p style="text-align:right;"><b>TOTALE SCADENZA</b></p></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_dare"/></b></p></td>
+                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_avere"/></b></p></td>
+                                    <td colspan="3"><p style="text-align:right;"><b><t t-esc="parziale_importo"/></b></p></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="12"> </td>
+                                </tr>
                             </table>
+
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <table id="total" class="table table-condensed">
+                                        <tbody>
+                                            <tr>
+                                                <td><h4><p style="text-align:right;"><b>TOTALE COMPLESSIVO: </b></p></h4></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_dare"/></b></p></h4></td>
+                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_avere"/></b></p></h4></td>
+                                                <td colspan="3"><h4><p style="text-align:right;"><b><span t-esc="tot_importo"/></b></p></h4></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                     </div>
                 </t>
             </t>
