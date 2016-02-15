@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-        <template id="report_duelist_qweb">
+        <template id="report_duelist_group_by_partner_qweb">
 
             <style type="text/css">
 
@@ -39,12 +39,13 @@
                                 <t t-set="parziale_dare" t-value="0.0"/>
                                 <t t-set="parziale_avere" t-value="0.0"/>
                                 <t t-set="flag" t-value="1"/>
-                                <t t-set="docs_o" t-value="docs.sorted(key=lambda r: r.date_maturity)"/>
-                                <t t-foreach="docs_o" t-as="line">
+                                <t t-set="partner_o" t-value="docs.sorted(key=lambda r: r.partner_id.name + r.date_maturity)"/>
+                                <!--<t t-set="date_partner_o" t-value="partner_o.sorted(key=lambda r: r.date_maturity)"/>-->
+                                <t t-foreach="partner_o" t-as="line">
                                     <tbody>
                                         <t t-if="line">
                                             <t t-if="flag != 1">
-                                                <t t-if="data_scadenza != line.date_maturity">
+                                                <t t-if="partner != line.partner_id.id">
                                                     <tr>
                                                         <td colspan="9"><p style="text-align:right;"><b>TOTALE SCADENZA</b></p></td>
                                                     </tr>
@@ -77,7 +78,7 @@
                                             <t t-set="parziale_importo" t-value="parziale_importo+line.maturity_residual"/>
                                             <t t-set="parziale_dare" t-value="parziale_dare+line.debit"/>
                                             <t t-set="parziale_avere" t-value="parziale_avere+line.credit"/>
-                                            <t t-set="data_scadenza" t-value="line.date_maturity"/>
+                                            <t t-set="partner" t-value="line.partner_id.id"/>
                                             <t t-set="flag" t-value="flag + 1"/>
                                         </t>
                                     </tbody>

@@ -29,5 +29,18 @@
                    ref="account_due_list_report.due_list_a4_landscape"/>
         </record>
 
+        <report
+			string="Due List report group by Partner"
+			id="action_report_duelist_partner"
+			model="account.move.line"
+			report_type="qweb-pdf"
+			name="account_due_list_report.report_duelist_group_by_partner_qweb"
+			file="account_due_list_report.report_duelist_group_by_partner_qweb"/>
+
+        <record id="action_report_duelist_partner" model="ir.actions.report.xml">
+            <field name="paperformat_id"
+                   ref="account_due_list_report.due_list_a4_landscape"/>
+        </record>
+
     </data>
 </openerp>

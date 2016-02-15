@@ -46,3 +46,22 @@ class DueListQweb(models.AbstractModel):
         return report_obj.render(
             'account_due_list_report.report_duelist_qweb',
             docargs)
+
+class DueListPartnerQweb(models.AbstractModel):
+
+    _name = 'report.account_due_list_report.report_duelist_group_by_partner_qweb'
+
+    @api.multi
+    def render_html(self, data=None):
+        report_obj = self.env['report']
+        report = report_obj._get_report_from_name(
+            'account_due_list_report.report_duelist_group_by_partner_qweb')
+        docargs = {
+            'doc_ids': self._ids,
+            'doc_model': report.model,
+            'company': False,
+            'docs': self.env[report.model].browse(self._ids),
+        }
+        return report_obj.render(
+            'account_due_list_report.report_duelist_group_by_partner_qweb',
+            docargs)

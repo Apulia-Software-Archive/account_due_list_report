@@ -40,6 +40,7 @@ ITA: Stampa Qweb delle scadenze cliente/fornitore""",
         'payment_type_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
+        'reports/group_by_partner_due_list_qweb.xml'
         ],
     "active": False,
     "installable": True,
