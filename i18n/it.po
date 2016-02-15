@@ -1,6 +1,6 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* account_due_list_extended
+#	* account_due_list_report
 #
 msgid ""
 msgstr ""
@@ -15,95 +15,95 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: field:account.move.line,payment_term_type:0
 #: field:account.payment.term,payment_term_type:0
 msgid "Tipo di pagamento"
 msgstr "Tipo di pagamento"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: field:account.journal,hide_in_due_view:0
 #: field:account.move.line,hide_in_due_view:0
 msgid "Hide in due list view"
 msgstr "Nascondi in lista scadenzario"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_payment_term_type
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_payment_term_type
 msgid "Payment term type list"
 msgstr "Lista dei tipi di termini pagamento"
 
-#. module: account_due_list_extended
-#: model:res.groups,name:account_due_list_extended.group_account_payment_term_type_user
+#. module: account_due_list_report
+#: model:res.groups,name:account_due_list_report.group_account_payment_term_type_user
 msgid "Account/Payment Term Type User"
 msgstr "Utente Tipi di pagamento"
 
-#. module: account_due_list_extended
-#: model:ir.actions.act_window,name:account_due_list_extended.action_view_payments_type
-#: model:ir.ui.menu,name:account_due_list_extended.menu_payments_type
+#. module: account_due_list_report
+#: model:ir.actions.act_window,name:account_due_list_report.action_view_payments_type
+#: model:ir.ui.menu,name:account_due_list_report.menu_payments_type
 msgid "Tipi di pagamento"
 msgstr "Tipi di pagamento"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_payment_term
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_payment_term
 msgid "Payment Term"
 msgstr "Termine di pagamento"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_journal
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_journal
 msgid "Journal"
 msgstr "Sezionale"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: view:account.move.line:0
 msgid "Unreconciled payments"
 msgstr "Pagamenti non riconciliati"
 
-#. module: account_due_list_extended
-#: model:res.groups,name:account_due_list_extended.group_account_payment_term_type_manager
+#. module: account_due_list_report
+#: model:res.groups,name:account_due_list_report.group_account_payment_term_type_manager
 msgid "Account/Payment Term Type Manager"
 msgstr "Manager Tipi di pagamento"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: view:account.move.line:0
 msgid "Unreconciled"
 msgstr "Non riconciliate"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: field:account.payment.term.type,description:0
 msgid "Descrizione"
 msgstr "Descrizione"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: view:account.move.line:0
 msgid "Reconciled"
 msgstr "Riconciliati"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: field:account.move.line,importo:0
 msgid "Importo"
 msgstr "Importo"
 
-#. module: account_due_list_extended
-#: model:ir.actions.report.xml,name:account_due_list_extended.report_stampa_scadenzario
+#. module: account_due_list_report
+#: model:ir.actions.report.xml,name:account_due_list_report.report_stampa_scadenzario
 msgid "Stampa Scadenzario"
 msgstr "Stampa Scadenzario"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_move_line
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_move_line
 msgid "Journal Items"
 msgstr "Voci sezionale"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: view:account.payment.term.type:0
 msgid "Payment"
 msgstr "Pagamento"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: view:account.move.line:0
 msgid "Reconciled payments"
 msgstr "Pagamenti riconciliati"
 
-#. module: account_due_list_extended
+#. module: account_due_list_report
 #: field:account.payment.term.type,name:0
 msgid "Codice"
 msgstr "Codice"

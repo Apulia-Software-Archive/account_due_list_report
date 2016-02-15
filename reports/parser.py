@@ -45,5 +45,5 @@ class account_due_list_webkit(report_sxw.rml_parse):
 
 report_sxw.report_sxw('report.account_due_list.scadenzario',
                       'account.move.line',
-                      'account_due_list_extended/reports/scadenzario.mako',
+                      'account_due_list_report/reports/scadenzario.mako',
                       parser=account_due_list_webkit)
