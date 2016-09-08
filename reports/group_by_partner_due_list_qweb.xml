@@ -65,7 +65,7 @@
                                             </t>
                                             <tr>
                                                 <td><t t-esc="line.invoice.journal_id and line.invoice.journal_id.code or ''"/></td>
-                                                <td><span t-field="line.partner_id.name"/></td>
+                                                <td><span t-field="line.partner_id.name"/> - (<span t-field="line.partner_id.phone"/>)</td>
                                                 <td><span t-field="line.invoice.date_invoice"/></td>
                                                 <td><t t-esc="line.invoice.supplier_invoice_number or line.invoice.number or line.name or ''"/></td>
                                                 <td><span t-field="line.date"/></td>
