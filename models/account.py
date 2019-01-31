@@ -1,111 +1,73 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (c) 2015 Apulia Software srl All Rights Reserved.
-#                       www.apuliasoftware.it
-#                       info@apuliasoftware.it
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published
-#    by the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2019 Apulia Software (<info@apuliasoftware.it>)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.osv import fields, orm
+from odoo import api, fields, models, _
 
 
-class account_payment_term_type(orm.Model):
+class AccountPaymentTermType(models.Model):
     _name = 'account.payment.term.type'
     _description = 'Payment term type list'
 
-    _columns = {
-        'name': fields.char('Codice', size=16),
-        'description': fields.char('Descrizione', size=64),
-    }
-account_payment_term_type()
+    name = fields.Char(string='Codice', size=16)
+    description = fields.Char(string='Descrizione', size=64)
 
 
-class account_payment_term(orm.Model):
-    _name = 'account.payment.term'
+class AccountPaymentTerm(models.Model):
+
     _inherit = 'account.payment.term'
 
-    _columns = {
-        'payment_term_type': fields.many2one('account.payment.term.type',
-                                             'Tipo di pagamento'),
-    }
-
-account_payment_term()
+    payment_term_type = fields.Many2one('account.payment.term.type',
+                                        'Tipo di pagamento')
 
 
-class account_journal(orm.Model):
+class AccountJournal(models.Model):
+
     _inherit = "account.journal"
 
-    _columns = {
-        'hide_in_due_view': fields.boolean("Hide in due list view"),
-    }
-
-    _defaults = {
-        'hide_in_due_view': False,
-    }
-
-account_journal()
+    hide_in_due_view = fields.Boolean(string="Hide in due list view",
+                                      default=False)
 
 
-class account_move_line(orm.Model):
+class AccountMoveLine(models.Model):
 
-    _name = 'account.move.line'
     _inherit = 'account.move.line'
 
-    def _importo(self, cr, uid, ids, name, arg, context=None):
-        res = {}
-        for line in self.browse(cr, uid, ids, context=context):
-            if line.reconcile_partial_id:
-                total_line = 0.0
-                for line_reconcile in line.reconcile_partial_id.line_partial_ids:
-                    total_line += line_reconcile.debit - line_reconcile.credit
-                res[line.id] = total_line
-            else:
-                res[line.id] = line.debit - line.credit
-        return res
+    payment_term_type = fields.Many2one('account.payment.term.type',
+                                        string='Tipo di pagamento',
+                                        compute='_payment_type',
+                                        method=True,
+                                        store=True,
+                                        search='_payment_term_search')
 
-    def _payment_type(self, cr, uid, ids, name, arg, context=None):
-        res = {}
-        for line in self.browse(cr, uid, ids, context=context):
-            res[line.id] = (line.payment_term_id and
-                            line.payment_term_id.payment_term_type and
-                            line.payment_term_id.payment_term_type.id or False)
-        return res
+    importo = fields.Monetary(compute="_compute_importo",
+                              string="Importo",
+                              method=True,
+                              store=True)
 
-    def _payment_term_search(self, cr, uid, obj, name, args, context):
+    hide_in_due_view = fields.Boolean(related='journal_id.hide_in_due_view',
+                                      string='Hide in due list view')
+
+    @api.multi
+    @api.depends('amount_residual')
+    def _compute_importo(self):
+        for line in self:
+            line.importo = line.amount_residual
+
+    @api.multi
+    @api.depends('payment_term_id', 'payment_term_id.payment_term_type')
+    def _payment_type(self):
+        for line in self:
+            line.payment_term_type = \
+                line.invoice_id.payment_term_id.payment_term_type
+
+    @api.multi
+    def _payment_term_search(self, args):
         if args:
-            payment_obj = self.pool.get('account.payment.term')
-            payment_ids = payment_obj.search(cr, uid, args)
+            payment_obj = self.env('account.payment.term')
+            payment_ids = payment_obj.search(args)
             if payment_ids:
-                move_ids = self.search(cr, uid, [
+                move_ids = self.search([
                     ('payment_term_id', 'in', payment_ids)])
                 return [('id', 'in', move_ids)]
         return False
-
-    _columns = {
-        'payment_term_type': fields.function(
-            _payment_type, method=True, string='Tipo di pagamento',
-            type='many2one', relation='account.payment.term.type', store=False,
-            fnct_search=_payment_term_search),
-        'importo': fields.function(_importo, method=True, string='Importo',
-                                   type='float', store=False),
-        'hide_in_due_view': fields.related(
-            'journal_id', 'hide_in_due_view', string='Hide in due list view',
-            type="boolean" ),
-        }
-
-account_move_line()

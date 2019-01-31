@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
+<odoo>
     <data>
         <template id="report_duelist_qweb">
 
@@ -63,18 +63,18 @@
                                                 </t>
                                             </t>
                                             <tr>
-                                                <td><t t-esc="line.invoice.journal_id and line.invoice.journal_id.code or ''"/></td>
+                                                <td><t t-esc="line.invoice_id.journal_id and line.invoice_id.journal_id.code or ''"/></td>
                                                 <td><span t-field="line.partner_id.name"/> - (<span t-field="line.partner_id.phone"/>)</td>
-                                                <td><span t-field="line.invoice.date_invoice"/></td>
-                                                <td><t t-esc="line.invoice.supplier_invoice_number or line.invoice.number or line.name or ''"/></td>
+                                                <td><span t-field="line.invoice_id.date_invoice"/></td>
+                                                <td><t t-esc="line.invoice_id.supplier_invoice_number or line.invoice_id.number or line.name or ''"/></td>
                                                 <td><span t-field="line.date"/></td>
                                                 <td><span t-field="line.date_maturity"/></td>
-                                                <td><t t-esc="line.invoice.payment_term and line.invoice.payment_term.name or ''"/></td>
+                                                <td><t t-esc="line.invoice_id.payment_term_id and line.invoice_id.payment_term_id.name or ''"/></td>
                                                 <td class="text-right"><span t-field="line.debit"/></td>
                                                 <td class="text-right"><span t-field="line.credit"/></td>
-                                                <td class="text-right"><span t-field="line.maturity_residual"/></td>
+                                                <td class="text-right"><span t-field="line.amount_residual"/></td>
                                             </tr>
-                                            <t t-set="parziale_importo" t-value="parziale_importo+line.maturity_residual"/>
+                                            <t t-set="parziale_importo" t-value="parziale_importo+line.amount_residual"/>
                                             <t t-set="parziale_dare" t-value="parziale_dare+line.debit"/>
                                             <t t-set="parziale_avere" t-value="parziale_avere+line.credit"/>
                                             <t t-set="data_scadenza" t-value="line.date_maturity"/>
@@ -96,7 +96,7 @@
                                 </tr>
                                 <t t-set="tot_dare" t-value="sum([t.debit for t in docs])"/>
                                 <t t-set="tot_avere" t-value="sum([t.credit for t in docs])"/>
-                                <t t-set="tot_residual" t-value="sum([t.maturity_residual for t in docs])"/>
+                                <t t-set="tot_residual" t-value="sum([t.amount_residual for t in docs])"/>
                                 <tr>
                                     <td colspan="9"><h4><p style="text-align:right;"><b>TOTALE COMPLESSIVO: </b></p></h4></td>
                                 </tr>
@@ -112,4 +112,4 @@
             </t>
         </template>
     </data>
-</openerp>
+</odoo>

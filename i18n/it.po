@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* account_due_list_extended
+#	* account_due_list_report
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-29 09:19+0000\n"
-"PO-Revision-Date: 2014-04-29 09:19+0000\n"
+"POT-Creation-Date: 2019-01-31 11:52+0000\n"
+"PO-Revision-Date: 2019-01-31 11:52+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -15,96 +15,240 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
 
-#. module: account_due_list_extended
-#: field:account.move.line,payment_term_type:0
-#: field:account.payment.term,payment_term_type:0
-msgid "Tipo di pagamento"
-msgstr "Tipo di pagamento"
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "<b>TOTALE COMPLESSIVO: </b>"
+msgstr "<b>TOTALE COMPLESSIVO: </b>"
 
-#. module: account_due_list_extended
-#: field:account.journal,hide_in_due_view:0
-#: field:account.move.line,hide_in_due_view:0
-msgid "Hide in due list view"
-msgstr "Nascondi in lista scadenzario"
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "<b>TOTALE SCADENZA</b>"
+msgstr "<b>TOTALE SCADENZA</b>"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_payment_term_type
-msgid "Payment term type list"
-msgstr "Lista dei tipi di termini pagamento"
-
-#. module: account_due_list_extended
-#: model:res.groups,name:account_due_list_extended.group_account_payment_term_type_user
-msgid "Account/Payment Term Type User"
-msgstr "Utente Tipi di pagamento"
-
-#. module: account_due_list_extended
-#: model:ir.actions.act_window,name:account_due_list_extended.action_view_payments_type
-#: model:ir.ui.menu,name:account_due_list_extended.menu_payments_type
-msgid "Tipi di pagamento"
-msgstr "Tipi di pagamento"
-
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_payment_term
-msgid "Payment Term"
-msgstr "Termine di pagamento"
-
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_journal
-msgid "Journal"
-msgstr "Sezionale"
-
-#. module: account_due_list_extended
-#: view:account.move.line:0
-msgid "Unreconciled payments"
-msgstr "Pagamenti non riconciliati"
-
-#. module: account_due_list_extended
-#: model:res.groups,name:account_due_list_extended.group_account_payment_term_type_manager
+#. module: account_due_list_report
+#: model:res.groups,name:account_due_list_report.group_account_payment_term_type_manager
 msgid "Account/Payment Term Type Manager"
-msgstr "Manager Tipi di pagamento"
+msgstr "Account/Tipo termine di pagamento Manager"
 
-#. module: account_due_list_extended
-#: view:account.move.line:0
-msgid "Unreconciled"
-msgstr "Non riconciliate"
+#. module: account_due_list_report
+#: model:res.groups,name:account_due_list_report.group_account_payment_term_type_user
+msgid "Account/Payment Term Type User"
+msgstr "Account/Tipo termine di pagamento User"
 
-#. module: account_due_list_extended
-#: field:account.payment.term.type,description:0
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Avere"
+msgstr "Avere"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_name
+msgid "Codice"
+msgstr "Codice"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Dare"
+msgstr "Dare"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Data Effettiva"
+msgstr "Data Effettiva"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Data Fattura"
+msgstr "Data Fattura"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Data Scadenza"
+msgstr "Data Scadenza"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_description
 msgid "Descrizione"
 msgstr "Descrizione"
 
-#. module: account_due_list_extended
-#: view:account.move.line:0
-msgid "Reconciled"
-msgstr "Riconciliati"
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_display_name
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb_display_name
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb_display_name
+msgid "Display Name"
+msgstr "Nome Visualizzato"
 
-#. module: account_due_list_extended
-#: field:account.move.line,importo:0
+#. module: account_due_list_report
+#: model:ir.actions.report.xml,name:account_due_list_report.action_report_duelist
+msgid "Due List report"
+msgstr "Report scadenziario"
+
+#. module: account_due_list_report
+#: model:ir.actions.report.xml,name:account_due_list_report.action_report_duelist_partner
+msgid "Due List report group by Partner"
+msgstr "Report scadenziario per Cliente"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Fattura"
+msgstr "Fattura"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_journal_hide_in_due_view
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_move_line_hide_in_due_view
+msgid "Hide in due list view"
+msgstr "Nascondi nella visualizzazione dello scadenziario"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_id
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb_id
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb_id
+msgid "ID"
+msgstr "ID"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_move_line_importo
 msgid "Importo"
 msgstr "Importo"
 
-#. module: account_due_list_extended
-#: model:ir.actions.report.xml,name:account_due_list_extended.report_stampa_scadenzario
-msgid "Stampa Scadenzario"
-msgstr "Stampa Scadenzario"
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_journal
+msgid "Journal"
+msgstr "Sezionale"
 
-#. module: account_due_list_extended
-#: model:ir.model,name:account_due_list_extended.model_account_move_line
-msgid "Journal Items"
-msgstr "Voci sezionale"
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_move_line
+msgid "Journal Item"
+msgstr "Elemento Sezionale"
 
-#. module: account_due_list_extended
-#: view:account.payment.term.type:0
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type___last_update
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb___last_update
+#: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb___last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_write_uid
+msgid "Last Updated by"
+msgstr "Ultima modifica di"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_write_date
+msgid "Last Updated on"
+msgstr "Ultima modifica il"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Pagamento"
+msgstr "Pagamento"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_type_tree
 msgid "Payment"
 msgstr "Pagamento"
 
-#. module: account_due_list_extended
-#: view:account.move.line:0
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_payment_term
+msgid "Payment Term"
+msgstr "Termine di pagamento"
+
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_account_payment_term_type
+msgid "Payment term type list"
+msgstr "Payment term type list"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_filter_type_extended
+msgid "Reconciled"
+msgstr "Riconciliati"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_filter_type_extended
 msgid "Reconciled payments"
 msgstr "Pagamenti riconciliati"
 
-#. module: account_due_list_extended
-#: field:account.payment.term.type,name:0
-msgid "Codice"
-msgstr "Codice"
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Residuo"
+msgstr "Residuo"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "SCADENZARIO"
+msgstr "SCADENZARIO"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
+#: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
+msgid "Sez.le"
+msgstr "Sez.le"
+
+#. module: account_due_list_report
+#: model:ir.actions.act_window,name:account_due_list_report.action_view_payments_type
+#: model:ir.ui.menu,name:account_due_list_report.menu_payments_type
+msgid "Tipi di pagamento"
+msgstr "Tipi di pagamento"
+
+#. module: account_due_list_report
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_move_line_payment_term_type
+#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_payment_term_type
+msgid "Tipo di pagamento"
+msgstr "Tipo di pagamento"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_filter_type_extended
+msgid "Unreconciled"
+msgstr "Non riconciliate"
+
+#. module: account_due_list_report
+#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_filter_type_extended
+msgid "Unreconciled payments"
+msgstr "Pagamenti non riconciliati"
+
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_group_by_date_qweb
+msgid "report.account_due_list_report.group_by_date_qweb"
+msgstr "report.account_due_list_report.group_by_date_qweb"
+
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_group_by_partner_qweb
+msgid "report.account_due_list_report.group_by_partner_qweb"
+msgstr "report.account_due_list_report.group_by_partner_qweb"
+
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_prova_qweb
+msgid "report.account_due_list_report.prova_qweb"
+msgstr "report.account_due_list_report.prova_qweb"
+
+#. module: account_due_list_report
+#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_report_duelist_qweb
+msgid "report.account_due_list_report.report_duelist_qweb"
+msgstr "report.account_due_list_report.report_duelist_qweb"
 
