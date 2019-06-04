@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-31 11:52+0000\n"
-"PO-Revision-Date: 2019-01-31 11:52+0000\n"
+"POT-Creation-Date: 2019-06-04 13:49+0000\n"
+"PO-Revision-Date: 2019-06-04 13:49+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -44,21 +44,6 @@ msgid "Avere"
 msgstr "Avere"
 
 #. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_name
-msgid "Codice"
-msgstr "Codice"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_create_uid
-msgid "Created by"
-msgstr "Creato da"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_create_date
-msgid "Created on"
-msgstr "Creato il"
-
-#. module: account_due_list_report
 #: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
 #: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
 msgid "Dare"
@@ -83,12 +68,6 @@ msgid "Data Scadenza"
 msgstr "Data Scadenza"
 
 #. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_description
-msgid "Descrizione"
-msgstr "Descrizione"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_display_name
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb_display_name
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb_display_name
 msgid "Display Name"
@@ -117,42 +96,25 @@ msgid "Hide in due list view"
 msgstr "Nascondi nella visualizzazione dello scadenziario"
 
 #. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_id
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb_id
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb_id
 msgid "ID"
 msgstr "ID"
 
 #. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_move_line_importo
-msgid "Importo"
-msgstr "Importo"
-
-#. module: account_due_list_report
 #: model:ir.model,name:account_due_list_report.model_account_journal
 msgid "Journal"
-msgstr "Sezionale"
+msgstr "Registro"
 
 #. module: account_due_list_report
 #: model:ir.model,name:account_due_list_report.model_account_move_line
 msgid "Journal Item"
-msgstr "Elemento Sezionale"
+msgstr "Movimento contabile"
 
 #. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type___last_update
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_date_qweb___last_update
 #: model:ir.model.fields,field_description:account_due_list_report.field_report_account_due_list_report_group_by_partner_qweb___last_update
 msgid "Last Modified on"
-msgstr "Ultima modifica il"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_write_uid
-msgid "Last Updated by"
-msgstr "Ultima modifica di"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_type_write_date
-msgid "Last Updated on"
 msgstr "Ultima modifica il"
 
 #. module: account_due_list_report
@@ -165,17 +127,7 @@ msgstr "Pagamento"
 #: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_group_by_partner_qweb
 #: model:ir.ui.view,arch_db:account_due_list_report.report_duelist_qweb
 msgid "Partner"
-msgstr "Cliente"
-
-#. module: account_due_list_report
-#: model:ir.ui.view,arch_db:account_due_list_report.view_payments_type_tree
-msgid "Payment"
-msgstr "Pagamento"
-
-#. module: account_due_list_report
-#: model:ir.model,name:account_due_list_report.model_account_payment_term
-msgid "Payment Term"
-msgstr "Termine di pagamento"
+msgstr "Partner"
 
 #. module: account_due_list_report
 #: model:ir.model,name:account_due_list_report.model_account_payment_term_type
@@ -211,18 +163,6 @@ msgid "Sez.le"
 msgstr "Sez.le"
 
 #. module: account_due_list_report
-#: model:ir.actions.act_window,name:account_due_list_report.action_view_payments_type
-#: model:ir.ui.menu,name:account_due_list_report.menu_payments_type
-msgid "Tipi di pagamento"
-msgstr "Tipi di pagamento"
-
-#. module: account_due_list_report
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_move_line_payment_term_type
-#: model:ir.model.fields,field_description:account_due_list_report.field_account_payment_term_payment_term_type
-msgid "Tipo di pagamento"
-msgstr "Tipo di pagamento"
-
-#. module: account_due_list_report
 #: model:ir.ui.view,arch_db:account_due_list_report.view_payments_filter_type_extended
 msgid "Unreconciled"
 msgstr "Non riconciliate"
@@ -241,14 +181,4 @@ msgstr "report.account_due_list_report.group_by_date_qweb"
 #: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_group_by_partner_qweb
 msgid "report.account_due_list_report.group_by_partner_qweb"
 msgstr "report.account_due_list_report.group_by_partner_qweb"
-
-#. module: account_due_list_report
-#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_prova_qweb
-msgid "report.account_due_list_report.prova_qweb"
-msgstr "report.account_due_list_report.prova_qweb"
-
-#. module: account_due_list_report
-#: model:ir.model,name:account_due_list_report.model_report_account_due_list_report_report_duelist_qweb
-msgid "report.account_due_list_report.report_duelist_qweb"
-msgstr "report.account_due_list_report.report_duelist_qweb"
 

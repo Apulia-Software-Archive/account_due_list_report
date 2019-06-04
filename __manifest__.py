@@ -4,7 +4,7 @@
 
 {
     'name': "Payments Due list Report",
-    'version': '10.0.1.0.0',
+    'version': '10.0.1.1.0',
     'category': 'Generic Modules/Payment',
     'description': """
 ENG: Original AgileBG addons extended with QWeb report\n
@@ -19,9 +19,6 @@ ITA: Stampa Qweb delle scadenze cliente/fornitore""",
     "data": [
         'views/account_view.xml',
         'reports/reports.xml',
-        'payment_type_data.xml',
-        'security/security.xml',
-        'security/ir.model.access.csv',
         'reports/due_list_qweb.xml',
         'reports/group_by_partner_due_list_qweb.xml',
         ],
